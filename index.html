@@ -633,6 +633,25 @@ colors: {
             color: #6B7280;
             border-color: rgba(0,0,0,0.08);
         }
+
+        /* =======================================================
+       CORRECCIÓN FINAL: BOTONES VERDE JADE CON TEXTO BLANCO
+       ======================================================= */
+    
+    /* Esto busca los botones dentro de la sección de INICIO */
+    #inicio .cta-btn {
+        background-color: #00A86B !important; /* Fondo Verde Jade */
+        color: #FFFFFF !important;            /* Texto Blanco */
+        border: none !important;              /* Elimina el borde negro si existe */
+        box-shadow: 0 4px 15px rgba(0, 168, 107, 0.3); /* Sombra suave verde */
+    }
+
+    /* Efecto al pasar el mouse (opcional: se vuelve negro para interactividad) */
+    #inicio .cta-btn:hover {
+        background-color: #000000 !important; /* Fondo Negro */
+        color: #FFFFFF !important;            /* Texto Blanco */
+        transform: translateY(-2px);          /* Pequeña elevación */
+    }
     </style>
 </head>
 <body class="font-body text-gray-800 relative">
