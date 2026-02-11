@@ -17,11 +17,13 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { display: ['"Syne"', 'sans-serif'], body: ['"Poppins"', 'sans-serif'] },
-                    colors: { 
-                        gold: {500:'#C8A951'}, 
-                        // AQUÍ ESTÁ EL CAMBIO AL VERDE JADE
-                        brand: {green:'#00A86B', dark:'#000000'} 
+                    fontFamily: {
+                        display: ['"Syne"', 'sans-serif'],
+                        body: ['"Poppins"', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: { 500:'#C8A951', 600:'#9A7B2F' },
+                        brand: { green:'#00A86B', dark:'#000000' } /* VERDE JADE #00A86B */
                     }
                 }
             }
@@ -30,21 +32,22 @@
     <style>
         body { background-color: #F8F6F3; overflow-x: hidden; color: #000000; font-family: 'Poppins', sans-serif; }
         
-        /* === REGLAS DE VISIBILIDAD === */
+        /* === CORRECCIÓN VISIBILIDAD === */
         p, span, li, a, h1, h2, h3, h4 { color: #000000; font-weight: 500; }
-        .text-gray-500, .text-gray-400 { color: #000000 !important; }
-
-        /* Excepciones (Texto blanco sobre fondo oscuro) */
+        .text-gray-500, .text-gray-400 { color: #000000 !important; opacity: 1; }
+        
+        /* Excepciones (Textos blancos obligatorios) */
         footer p, footer span, footer a, footer h3, footer li { color: #FFFFFF !important; }
         .glass-dark p, .glass-dark span, .glass-dark h2, .glass-dark a { color: #FFFFFF !important; }
-        .bg-brand-green, .bg-black { color: #FFFFFF !important; }
-        .carousel-item .overlay p { color: #FFFFFF !important; }
-        
-        /* === ACENTO VERDE JADE === */
-        .text-brand-green { color: #00A86B !important; } /* Verde Jade */
-        .accent-green { color: #00A86B !important; }
+        .bg-brand-green { color: #FFFFFF !important; }
+        .bg-black { color: #FFFFFF !important; }
+        .overlay p { color: #FFFFFF !important; }
+        .lightbox-caption { color: #FFFFFF !important; }
 
-        /* Estilos Base */
+        /* Acento Verde Jade */
+        .text-brand-green { color: #00A86B !important; }
+
+        /* Fondos y Efectos */
         .marble-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: radial-gradient(ellipse at center, #FFFFFF 0%, #F5F5F5 100%); }
         .glass { background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.1); }
         .glass-dark { background: rgba(20,20,20,0.95); backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.1); }
@@ -53,29 +56,33 @@
         .navbar.scrolled { background: rgba(255,255,255,0.95); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         
         .cta-btn { font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; transition: 0.3s; }
-        
-        /* Animación Pulse Jade */
         .pulse-jade { animation: pulseJ 2s infinite; }
-        @keyframes pulseJ { 
-            0% { box-shadow: 0 0 0 0 rgba(0, 168, 107, 0.4); } 
-            70% { box-shadow: 0 0 0 15px transparent; } 
-            100% { box-shadow: 0 0 0 0 transparent; } 
-        }
+        @keyframes pulseJ { 0% { box-shadow: 0 0 0 0 rgba(0,168,107,0.4); } 70% { box-shadow: 0 0 0 15px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
 
-        /* Carrusel */
-        .carousel-track { display: flex; gap: 20px; animation: scroll 60s linear infinite; width: max-content; }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        /* Carruseles */
+        .clients-track { display: flex; gap: 40px; width: max-content; align-items: center; }
+        .clients-track-left { animation: scroll-left 35s linear infinite; }
+        .clients-track-right { animation: scroll-right 40s linear infinite; }
+        @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes scroll-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+        .client-logo-item { width: 140px; height: 90px; background: rgba(255,255,255,0.5); display: flex; align-items: center; justify-content: center; border-radius: 16px; border: 1px solid rgba(0,0,0,0.05); }
+        .client-logo-item img { max-width: 80%; max-height: 80%; filter: grayscale(100%); transition: 0.3s; }
+        .client-logo-item:hover img { filter: grayscale(0%); }
+
+        .carousel-track { display: flex; gap: 20px; animation: scroll-p 90s linear infinite; width: max-content; }
+        @keyframes scroll-p { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .carousel-item { width: 300px; height: 260px; border-radius: 20px; overflow: hidden; position: relative; flex-shrink: 0; cursor: pointer; }
         .carousel-item .overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 15px; background: linear-gradient(to top, black, transparent); opacity: 0; transition: 0.3s; }
         .carousel-item:hover .overlay { opacity: 1; }
         
-        /* Filtros Jade */
-        .filter-tab { padding: 8px 20px; border-radius: 50px; font-weight: 700; text-transform: uppercase; border: 1px solid #000; cursor: pointer; font-size: 11px; }
-        .filter-tab.active { background: #00A86B; color: #FFF !important; border-color: #00A86B; }
-        
         /* Lightbox */
         .lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.95); display: none; align-items: center; justify-content: center; }
         .lightbox.active { display: flex; }
+        
+        /* Filtros */
+        .filter-tab { padding: 8px 20px; border-radius: 50px; font-weight: 700; text-transform: uppercase; border: 1px solid #000; cursor: pointer; font-size: 11px; background: transparent; }
+        .filter-tab.active { background: #00A86B; color: #FFF !important; border-color: #00A86B; }
 
         /* Mobile Menu */
         .mobile-menu { transform: translateX(100%); transition: 0.3s; }
@@ -90,8 +97,8 @@
         <button class="absolute top-5 right-5 text-white text-4xl z-50">✕</button>
         <button class="absolute left-5 text-white text-5xl z-50 p-4" onclick="navLightbox(-1, event)">‹</button>
         <button class="absolute right-5 text-white text-5xl z-50 p-4" onclick="navLightbox(1, event)">›</button>
-        <img id="lightbox-img" src="" class="max-w-[90vw] max-h-[80vh] object-contain rounded-lg">
-        <div id="lightbox-caption" class="absolute bottom-10 text-white font-bold bg-black/60 px-4 py-2 rounded"></div>
+        <img id="lightbox-img" src="" class="max-w-[90vw] max-h-[80vh] object-contain rounded-lg shadow-2xl">
+        <div id="lightbox-caption" class="absolute bottom-10 text-white font-bold bg-black/60 px-6 py-2 rounded-full uppercase tracking-widest lightbox-caption"></div>
     </div>
 
     <nav id="navbar" class="navbar fixed top-0 left-0 w-full z-50 py-4 px-6">
@@ -101,6 +108,7 @@
                 <a href="#inicio" class="text-xs font-bold uppercase hover:text-brand-green transition-colors">Inicio</a>
                 <a href="#nosotros" class="text-xs font-bold uppercase hover:text-brand-green transition-colors">Nosotros</a>
                 <a href="#portafolio" class="text-xs font-bold uppercase hover:text-brand-green transition-colors">Portafolio</a>
+                <a href="#clientes" class="text-xs font-bold uppercase hover:text-brand-green transition-colors">Clientes</a>
                 <a href="#servicios" class="text-xs font-bold uppercase hover:text-brand-green transition-colors">Servicios</a>
                 <a href="#contacto" class="cta-btn bg-black text-white px-6 py-2 rounded-full hover:bg-brand-green text-xs">Contactar</a>
             </div>
@@ -110,11 +118,12 @@
         </div>
     </nav>
 
-    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-white z-40 flex flex-col items-center justify-center gap-8">
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-white/98 z-40 flex flex-col items-center justify-center gap-8">
         <button class="absolute top-6 right-6 text-3xl" onclick="toggleMenu()">✕</button>
         <a href="#inicio" onclick="toggleMenu()" class="text-xl font-bold uppercase hover:text-brand-green">Inicio</a>
         <a href="#nosotros" onclick="toggleMenu()" class="text-xl font-bold uppercase hover:text-brand-green">Nosotros</a>
         <a href="#portafolio" onclick="toggleMenu()" class="text-xl font-bold uppercase hover:text-brand-green">Portafolio</a>
+        <a href="#clientes" onclick="toggleMenu()" class="text-xl font-bold uppercase hover:text-brand-green">Clientes</a>
         <a href="#contacto" onclick="toggleMenu()" class="cta-btn bg-brand-green text-white px-10 py-3 rounded-full">Contactar</a>
     </div>
 
@@ -125,7 +134,7 @@
             <h1 data-aos="fade-up" data-aos-delay="200" class="font-display text-5xl md:text-7xl lg:text-8xl font-black leading-none mb-6">
                 <span class="text-brand-green">Personalizamos</span><br>sus Ideas
             </h1>
-            <p data-aos="fade-up" data-aos-delay="400" class="text-lg md:text-xl font-bold max-w-2xl mx-auto mb-10">
+            <p data-aos="fade-up" data-aos-delay="400" class="text-lg md:text-xl font-bold max-w-2xl mx-auto mb-10 text-black">
                 Bordados industriales de alta gama. Excelencia textil desde 12 prendas en Medellín.
             </p>
             <div data-aos="fade-up" data-aos-delay="600" class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -140,8 +149,8 @@
             <div>
                 <span class="text-xs font-extrabold uppercase text-brand-green mb-2 block">Trayectoria</span>
                 <h2 class="font-display text-4xl md:text-5xl font-black mb-6">Más de <span class="text-brand-green">12 Años</span> de Experiencia</h2>
-                <p class="font-bold mb-4">Somos el aliado estratégico de las marcas textiles más importantes de Colombia.</p>
-                <p class="font-medium">Nuestra planta cuenta con capacidad para atender desde emprendimientos hasta grandes producciones industriales.</p>
+                <p class="font-bold mb-4 text-black">Somos el aliado estratégico de las marcas textiles más importantes de Colombia.</p>
+                <p class="font-medium text-black">Nuestra planta cuenta con capacidad para atender desde emprendimientos hasta grandes producciones industriales.</p>
             </div>
             <div class="grid grid-cols-2 gap-4">
                 <div class="glass p-6 rounded-2xl text-center"><span class="font-display text-5xl font-black text-brand-green">12+</span><br><span class="text-xs font-bold uppercase">Años</span></div>
@@ -155,12 +164,60 @@
             <h2 class="font-display text-4xl font-black mb-8">Maquinaria <span class="text-brand-green">Computarizada</span></h2>
             <div class="glass rounded-3xl p-8">
                 <img src="img/maquina-tajima.jpg" alt="Bordadora" class="w-full h-64 object-cover rounded-xl mb-6 shadow-md">
-                <p class="text-xl font-bold italic mb-4">Infraestructura multicabezal de última generación.</p>
-                <p class="font-medium mb-6">Garantizamos precisión milimétrica en logos complejos y velocidad de respuesta industrial.</p>
+                <p class="text-xl font-bold italic mb-4 text-black">Infraestructura multicabezal de última generación.</p>
+                <p class="font-medium mb-6 text-black">Garantizamos precisión milimétrica en logos complejos y velocidad de respuesta industrial.</p>
                 <div class="flex justify-center gap-2 flex-wrap">
                     <span class="bg-white border border-black px-4 py-1 rounded-full text-xs font-bold uppercase">Alta Precisión</span>
                     <span class="bg-white border border-black px-4 py-1 rounded-full text-xs font-bold uppercase">Sistematizado</span>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clientes" class="py-20 overflow-hidden">
+        <div class="text-center mb-10 px-6">
+            <h2 class="font-display text-4xl font-black mb-2">Nuestros <span class="text-brand-green">Clientes</span></h2>
+        </div>
+        
+        <div class="mb-6 relative">
+            <div class="clients-track clients-track-left">
+                <div class="client-logo-item"><img src="img/clientes/alcaldia-medellin.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/sena.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/la-cinteria.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/comercial-global.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/gas-oil.jpg" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/atenas.jpg" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/la-bonanza.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/eqs.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/alcaldia-medellin.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/sena.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/la-cinteria.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/comercial-global.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/gas-oil.jpg" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/atenas.jpg" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/la-bonanza.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/eqs.png" alt="Cliente"></div>
+            </div>
+        </div>
+        
+        <div class="relative">
+            <div class="clients-track clients-track-right">
+                <div class="client-logo-item"><img src="img/clientes/mi-tingo-talango.jpg" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/avancemos.jpg" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/tizo.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/la-lonja.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/nafta.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/alcaldia-envigado.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/alcaldia-elbagre.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/comercial-global-alt.jpg" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/mi-tingo-talango.jpg" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/avancemos.jpg" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/tizo.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/la-lonja.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/nafta.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/alcaldia-envigado.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/alcaldia-elbagre.png" alt="Cliente"></div>
+                <div class="client-logo-item"><img src="img/clientes/comercial-global-alt.jpg" alt="Cliente"></div>
             </div>
         </div>
     </section>
@@ -222,31 +279,31 @@
     </section>
 
     <section class="py-20 px-6">
-        <div class="max-w-5xl mx-auto glass-dark rounded-3xl p-12 text-center text-white">
-            <p class="text-xs tracking-[0.4em] uppercase opacity-70 mb-4 font-bold">Nuestro Diferenciador</p>
-            <h2 class="font-display text-4xl font-black mb-6">Atendemos desde <span class="text-brand-green">12 Prendas</span></h2>
-            <p class="text-lg font-medium mb-8">Hasta grandes producciones industriales, con la misma calidad.</p>
+        <div class="max-w-5xl mx-auto glass-dark rounded-3xl p-12 text-center">
+            <p class="text-xs tracking-[0.4em] uppercase opacity-70 mb-4 font-bold text-white">Nuestro Diferenciador</p>
+            <h2 class="font-display text-4xl font-black mb-6 text-white">Atendemos desde <span class="text-brand-green">12 Prendas</span></h2>
+            <p class="text-lg font-medium mb-8 text-white">Hasta grandes producciones industriales, con la misma calidad.</p>
             <a href="https://wa.me/573012776026" class="cta-btn bg-brand-green text-white px-10 py-4 rounded-full inline-block hover:bg-white hover:text-black">Cotizar Ahora</a>
         </div>
     </section>
 
-    <footer id="contacto" class="bg-black pt-16 pb-8 px-6 text-white">
+    <footer id="contacto" class="bg-black pt-16 pb-8 px-6">
         <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 border-b border-white/20 pb-10">
             <div>
                 <img src="img/logo-footer.png" alt="OnlyBordados" class="h-10 mb-6 brightness-0 invert">
-                <p class="opacity-80">Líderes en bordado industrial en Medellín.</p>
+                <p class="opacity-80 text-white">Líderes en bordado industrial en Medellín.</p>
             </div>
             <div>
-                <h3 class="font-display text-2xl mb-4">Contacto</h3>
-                <p class="font-bold text-lg">301 277 6026</p>
-                <p class="opacity-80">Calle 44 # 73 - 33, Medellín</p>
+                <h3 class="font-display text-2xl mb-4 text-white">Contacto</h3>
+                <p class="font-bold text-lg text-white">301 277 6026</p>
+                <p class="opacity-80 text-white">Calle 44 # 73 - 33, Medellín</p>
             </div>
             <div>
-                <h3 class="font-display text-2xl mb-4">Horario</h3>
-                <p class="opacity-80">Lunes a Viernes: 8:00 AM - 5:30 PM</p>
+                <h3 class="font-display text-2xl mb-4 text-white">Horario</h3>
+                <p class="opacity-80 text-white">Lunes a Viernes: 8:00 AM - 5:30 PM</p>
             </div>
         </div>
-        <div class="text-center pt-8 text-xs uppercase opacity-50">© 2026 OnlyBordados.</div>
+        <div class="text-center pt-8 text-xs uppercase opacity-50 text-white">© 2026 OnlyBordados.</div>
     </footer>
 
     <a href="https://wa.me/573012776026" target="_blank" class="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-[#00A86B] flex items-center justify-center shadow-2xl pulse-jade">
@@ -264,7 +321,7 @@
         // Mobile Menu
         function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
 
-        // Carrusel Infinito (Duplicar items)
+        // Carruseles Infinitos (Duplicar items)
         const track = document.getElementById('carouselTrack');
         track.innerHTML += track.innerHTML;
 
@@ -290,7 +347,7 @@
         function navLightbox(dir, e) {
             e.stopPropagation();
             currentIdx = (currentIdx + dir + items.length) % items.length;
-            // Saltar items duplicados si es necesario, o simplemente usar el índice visual
+            // Manejo de duplicados para navegación fluida
             const img = items[currentIdx].querySelector('img');
             const title = items[currentIdx].querySelector('.overlay p');
             document.getElementById('lightbox-img').src = img.src;
