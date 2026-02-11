@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+    <!-- Página principal -->
+    <url>
+        <loc>https://onlybordados.com/</loc>
+        <lastmod>2025-02-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://onlybordados.com/img/logo-hero.png</image:loc>
+            <image:title>OnlyBordados Medellín — Bordados industriales</image:title>
+            <image:caption>Servicio de bordado computarizado en Medellín, Colombia</image:caption>
+            <image:geo_location>Medellín, Antioquia, Colombia</image:geo_location>
+        </image:image>
+    </url>
+
+    <!-- Sección Servicios (ancla — alta prioridad) -->
+    <url>
+        <loc>https://onlybordados.com/#servicios</loc>
+        <lastmod>2025-02-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Sección Portafolio -->
+    <url>
+        <loc>https://onlybordados.com/#portafolio</loc>
+        <lastmod>2025-02-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Sección Clientes -->
+    <url>
+        <loc>https://onlybordados.com/#clientes</loc>
+        <lastmod>2025-02-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Sección Nosotros -->
+    <url>
+        <loc>https://onlybordados.com/#nosotros</loc>
+        <lastmod>2025-02-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Sección Contacto -->
+    <url>
+        <loc>https://onlybordados.com/#contacto</loc>
+        <lastmod>2025-02-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+</urlset>

@@ -1,0 +1,40 @@
+# ============================================
+# robots.txt — OnlyBordados Medellín
+# https://onlybordados.com/robots.txt
+# ============================================
+
+User-agent: *
+Allow: /
+Allow: /img/
+Allow: /img/portafolio/
+Allow: /img/clientes/
+
+# Bloquear recursos innecesarios para el rastreo
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /cgi-bin/
+
+# Permitir acceso a CSS/JS para renderizado
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
+
+# Googlebot específico
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /img/
+
+# Sitemap
+Sitemap: https://onlybordados.com/sitemap.xml
+
+# Configuración de crawl-delay (opcional para bots que lo respetan)
+User-agent: Bingbot
+Crawl-delay: 5
+
+User-agent: Yandex
+Crawl-delay: 10
