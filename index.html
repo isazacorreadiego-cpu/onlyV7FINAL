@@ -394,6 +394,26 @@ colors: {
     }
 
         /* ==================================================
+       CORRECCIÓN DE BOTONES (Pega esto al final del CSS)
+       ================================================== */
+
+    /* 1. Botones Sólidos (Fondo Verde o Negro) -> Letra BLANCA */
+    .bg-brand-green, .bg-black {
+        color: #FFFFFF !important;
+    }
+
+    /* 2. Botones de Borde (Fondo Transparente) -> Letra NEGRA */
+    /* Esto arregla el botón que se veía invisible */
+    .border-black, .text-black, a.border-2 {
+        color: #000000 !important;
+        border-color: #000000 !important;
+    }
+    
+    /* Forzar especificidad para el botón de WhatsApp/Servicios si tiene borde */
+    a.cta-btn.border-2 {
+        color: #000000 !important;
+    }
+        /* ==================================================
        CORRECCIÓN FINAL DE VISIBILIDAD (Pega esto al final)
        ================================================== */
     
