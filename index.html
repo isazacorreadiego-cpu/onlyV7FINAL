@@ -393,6 +393,41 @@ colors: {
         color: #00A86B !important;
     }
 
+        /* ==================================================
+       CORRECCIÓN FINAL DE VISIBILIDAD (Pega esto al final)
+       ================================================== */
+    
+    /* 1. Forzar color NEGRO en el cuerpo de la página, títulos y párrafos */
+    body, h1, h2, h3, h4, p, li, span, div {
+        color: #000000 !important;
+    }
+
+    /* 2. Corrección específica para los textos grises que se ven blancos */
+    .text-gray-400, .text-gray-500, .text-gray-600, .text-gray-700, .text-gray-800 {
+        color: #000000 !important;
+    }
+
+    /* 3. EXCEPCIONES: Solo estas partes deben ser BLANCAS */
+    
+    /* El Footer (Fondo Negro) */
+    footer, footer p, footer span, footer a, footer h3, footer li {
+        color: #FFFFFF !important;
+    }
+
+    /* La Sección "Propuesta de Valor" (Fondo Oscuro) */
+    .glass-dark, .glass-dark p, .glass-dark span, .glass-dark h2, .glass-dark a {
+        color: #FFFFFF !important;
+    }
+
+    /* Botones y Textos sobre imágenes */
+    .cta-btn, .bg-brand-green, .bg-black, .overlay p {
+        color: #FFFFFF !important;
+    }
+
+    /* Títulos en Verde Jade */
+    .text-brand-green, .accent-green {
+        color: #00A86B !important;
+    }
         /* ===== CLIENTS CAROUSEL ===== */
         .clients-track {
             display: flex;
