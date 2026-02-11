@@ -652,6 +652,45 @@ colors: {
         color: #FFFFFF !important;            /* Texto Blanco */
         transform: translateY(-2px);          /* Pequeña elevación */
     }
+
+        /* =======================================================
+       CORRECCIÓN PIE DE PÁGINA (FONDO BLANCO - TEXTO NEGRO)
+       Pega esto al final de tu <style>, antes de cerrarlo.
+       ======================================================= */
+
+    /* 1. Cambiar el fondo del footer a BLANCO */
+    footer#contacto {
+        background-color: #FFFFFF !important;
+        border-top: 1px solid #E5E5E5; /* Línea sutil arriba */
+    }
+
+    /* 2. Forzar los Títulos (Contacto, Ubicación) a NEGRO */
+    footer#contacto h3 {
+        color: #000000 !important;
+        font-weight: 800 !important; /* Más negrita para resaltar */
+    }
+
+    /* 3. Forzar el contenido (Dirección, teléfonos, textos) a NEGRO */
+    footer#contacto p, 
+    footer#contacto a, 
+    footer#contacto span,
+    footer#contacto li {
+        color: #000000 !important;
+        opacity: 1 !important;
+    }
+
+    /* 4. Corregir el Logo para que se vea bien en fondo blanco */
+    /* Quitamos el filtro 'invert' que lo hacía blanco */
+    footer#contacto img {
+        filter: none !important; 
+        opacity: 1 !important;
+    }
+
+    /* 5. Color del Copyright (texto pequeño abajo) */
+    footer#contacto .opacity-50 {
+        color: #000000 !important;
+        opacity: 0.6 !important;
+    }
     </style>
 </head>
 <body class="font-body text-gray-800 relative">
